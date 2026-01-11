@@ -3,9 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WDD131 - BYU</title>
+    <meta name="description"
+        content="My name is Emilio Jose Cayambe Miranda, this page is for my WDD 131 – Dynamic Web Fundamentals class. I created it to practice web design, javascript and development skills and to successfully pass this course.">
+    <meta name="author" content="Emilio Cayambe Miranda">
+    <title>WDD 131 – Dynamic Web Fundamentals – Emilio Cayambe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <script defer src="scripts/getdates.js"></script>
 </head>
 <body>
-    <h1>WDD131 - BYU - Idaho</h1>
+    <header>
+        <span id="course-title">WDD 131 – Dynamic Web Fundamentals</span>
+        <nav>
+            <ul class="navigation">
+                <li><a href="https://www.linkedin.com/in/emilio-cayambe-04a840b8/" target="_blank">My Linkedin</a></li>
+                <li><a href="https://byupw.instructure.com/">Canvas</a></li>
+                <li><a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/19?lang=eng&id=p9#p9">Scripture</a></li>
+                <li><a href="#">Final Project</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="grid">
+        <h1>Emilio Cayambe Miranda</h1>
+        <section class="card">
+        <h2>About Me</h2>
+
+        <div class="about-top">
+            <p>
+            My name is Emilio Cayambe Miranda. I have a beautiful family, a dog as a
+            pet, and I am very grateful to have a grandchild, who is an important
+            motivation in my life.
+            <br><br>
+            I am currently studying web development because I want to improve my web
+            development skills, learn new technologies, and grow professionally.
+            </p>
+
+            <img src="images/profile.jpg" alt="Emilio Cayambe">
+        </div>
+
+        <hr>
+
+        <div class="about-bottom">
+            <img src="images/guayaquil.jpg" alt="Guayaquil city">
+            <p>
+            Guayaquil is the largest city in Ecuador and an important economic and
+            cultural center of the country. It is located on the coast, along the
+            Guayas River and is known for its warm weather and friendly people.
+            </p>
+        </div>
+        </section>
+        <section class="card">
+            <h2>Web Dev Resources</h2>
+            <ul>
+                <li><a href="https://www.udemy.com/">Udemi</a></li>
+                <li><a href="https://codepen.io/">Codepen</a></li>
+                <li><a href="https://www.codecademy.com/">Code Academy</a></li>
+                <li><a href="https://es.khanacademy.org/">Khan Academy</a></li>
+                <li><a href="https://www.w3schools.com/">W3School</a></li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>© <span id="currentyear"></span> | Emilio Cayambe | Guayaquil, Ecuador 🇪🇨</p>
+        <p id="lastModified"></p>
+    </footer>
 </body>
 </html>
