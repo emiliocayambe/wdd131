@@ -1,42 +1,60 @@
 /* temples-large.css - Desktop adjustments */
 
+/* Only apply these styles for screens wider than 740px */
 @media (min-width: 740px) {
-  /* 1. Header & Menu adjustments */
+  
+  /* 1. Header & Menu layout adjustments */
   header {
     padding: 1rem 5%;
-    justify-content: space-between !important; /* Siempre con espacio en escritorio */
+    /* Ensure title and nav stay on opposite sides in desktop view */
+    justify-content: space-between !important; 
   }
 
+  header h1 {
+    /* Ensure the title is always visible on larger screens */
+    display: block !important;
+  }
 
+  /* Requirement: Flexbox on the nav element for desktop alignment */
+  nav {
+    display: flex;
+    flex-direction: row;    /* Horizontal alignment for desktop */
+    justify-content: flex-end;
+    flex: 1;                /* Occupies remaining space to the right of the title */
+  }
+
+  /* Hide the hamburger button on large screens */
   #menu {
-    display: none; /* Esconder botón hamburguesa */
+    display: none; 
   }
 
-  /* 2. Navigation Horizontal */
+  /* 2. Horizontal Navigation List */
   .navigation {
     display: flex; 
-    position: static;
+    position: static;      /* Reset mobile absolute positioning */
     flex-direction: row;
     background-color: transparent;
     width: auto;
   }
 
   .navigation a {
-    border-bottom: none;
+    border-bottom: none;   /* Remove mobile separators */
     padding: 0.5rem 1.5rem;
   }
 
-  /* 3. Grid for Desktop (Multiple Columns) */
-#temple-list {
+  /* 3. Responsive Grid for Desktop (Multiple Columns) */
+  #temple-list {
     display: grid;
-    /* Este comando hace la magia: */
-    /* 3 columnas en pantallas grandes, 2 en medianas y 1 si se reduce mucho */
+    /* Responsive magic: 
+       Automatically switches between 3, 2, or 1 columns 
+       based on available width (min 300px per card) */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
   }
 
+  /* Limit the main content width for better readability on wide monitors */
   main {
-    max-width: 1100px; /* Limitamos el ancho total para que no se estire infinito */
+    max-width: 1100px; 
     margin: 0 auto;
   }
 }
