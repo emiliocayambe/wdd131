@@ -1,0 +1,149 @@
+/* ===============================
+   COLOR VARIABLES
+   =============================== */
+:root {
+  --primary: #0B1C2D;      /* Navy blue */
+  --nav-bg: #1F3A52;       /* Navigation */
+  --secondary: #F4F6F8;    /* Page background */
+  --text-dark: #2E2E2E;    /* Main text */
+  --text-light: #EEEEEE;   /* Light text */
+  --accent: #C9A24D;       /* Gold accent */
+}
+
+/* ===============================
+   RESET & BASE
+   =============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background-color: var(--secondary);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* ===============================
+   HEADER & NAVIGATION (Mobile)
+   =============================== */
+header {
+  background-color: var(--primary);
+  color: var(--text-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 3px solid var(--accent);
+  position: relative;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+/* Forzar botón a la derecha si el h1 desaparece */
+header.open {
+  justify-content: flex-end;
+}
+
+#menu {
+  display: block;
+  font-size: 2.5rem;
+  text-decoration: none;
+  color: var(--text-light);
+  line-height: 1;
+}
+
+#menu::before {
+  content: "≡";
+}
+
+#menu.open::before {
+  content: "✕"; /* Requerimiento de la tarea */
+}
+
+.navigation {
+  display: none; 
+  list-style: none;
+  background-color: var(--nav-bg);
+  width: 100%;
+  position: absolute;
+  top: 100%; /* Aparece justo debajo del header */
+  left: 0;
+  z-index: 10;
+}
+
+.navigation.open {
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation a {
+  display: block;
+  padding: 1.2rem;
+  color: var(--text-light);
+  text-decoration: none;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.navigation a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--accent);
+}
+
+/* ===============================
+   MAIN & GRID (Mobile: 1 Column)
+   =============================== */
+main {
+  max-width: 90vw;
+  margin: 1.5rem auto;
+}
+
+main h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+#temple-list {
+  display: grid;
+  grid-template-columns: 1fr; /* Una sola columna en móvil */
+  gap: 20px;
+  padding: 1rem;
+}
+
+figure {
+  margin: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+figcaption {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ===============================
+   FOOTER
+   =============================== */
+footer {
+  background-color: var(--primary);
+  color: var(--text-light);
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-top: 3px solid var(--accent);
+}

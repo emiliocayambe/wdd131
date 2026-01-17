@@ -1,0 +1,42 @@
+/* temples-large.css - Desktop adjustments */
+
+@media (min-width: 740px) {
+  /* 1. Header & Menu adjustments */
+  header {
+    padding: 1rem 5%;
+    justify-content: space-between !important; /* Siempre con espacio en escritorio */
+  }
+
+
+  #menu {
+    display: none; /* Esconder botón hamburguesa */
+  }
+
+  /* 2. Navigation Horizontal */
+  .navigation {
+    display: flex; 
+    position: static;
+    flex-direction: row;
+    background-color: transparent;
+    width: auto;
+  }
+
+  .navigation a {
+    border-bottom: none;
+    padding: 0.5rem 1.5rem;
+  }
+
+  /* 3. Grid for Desktop (Multiple Columns) */
+#temple-list {
+    display: grid;
+    /* Este comando hace la magia: */
+    /* 3 columnas en pantallas grandes, 2 en medianas y 1 si se reduce mucho */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  main {
+    max-width: 1100px; /* Limitamos el ancho total para que no se estire infinito */
+    margin: 0 auto;
+  }
+}
