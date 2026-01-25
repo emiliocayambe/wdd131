@@ -1,20 +1,24 @@
+/* --- 1. GLOBAL VARIABLES --- */
 :root {
-    /* Paleta de la bandera como acentos */
+    /* Ecuador Flag Palette for accents */
     --ecuador-yellow: #FFDD00;
     --ecuador-blue: #0033A0;
     --ecuador-red: #ED1C24;
     
-    /* Colores funcionales */
+    /* Functional Colors */
     --primary-color: var(--ecuador-blue);
     --text-color: #2c3e50;
     --bg-light: #ffffff;
     --bg-soft: #f8f9fa;
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     --font-main: 'Roboto', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
 }
 
+/* --- 2. BASE RESET --- */
 * {
     box-sizing: border-box;
+    /* Forces Roboto globally to eliminate "Times" font occurrences */
     font-family: var(--font-main);
 }
 
@@ -25,20 +29,22 @@ body {
     color: var(--text-color);
 }
 
-/* 2. APLICAR EL MISMO ANCHO A TODO */
+/* --- 3. CORE LAYOUT CONTAINERS --- */
+/* Aligns Header, Main, and Footer to a consistent centered grid */
 header, 
 main, 
 footer {
-    max-width: 1160px; /* El ancho que definimos para el collage */
-    margin: 0 auto;    /* ESTA REGLA centra los tres elementos */
-    width: 95%;        /* Para que en móviles no pegue a los bordes */
-    background-color: #fff; /* Asegura que todos tengan fondo blanco */
+    max-width: 1160px; 
+    margin: 0 auto;    /* Centers the three main blocks */
+    width: 95%;        /* Prevents touching edges on mobile */
+    background-color: #fff; 
 }
-/* 1. HEADER: Limpio con una franja tricolor sutil */
 
+/* --- 4. HEADER SECTION --- */
+/* Features a travel-magazine style with gradient overlay and subtle pattern */
 header {
     background: linear-gradient(135deg, rgba(0, 51, 160, 0.9) 0%, rgba(0, 74, 153, 0.8) 100%), 
-                url('https://www.transparenttextures.com/patterns/cubes.png'); /* Textura sutil */
+                url('https://www.transparenttextures.com/patterns/cubes.png'); 
     background-color: var(--ecuador-blue);
     padding: 3.5rem 1rem;
     color: white;
@@ -48,7 +54,7 @@ header {
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-/* Franja tricolor decorativa en la parte superior */
+/* Decorative tricolor stripe at the very top */
 header::before {
     content: "";
     position: absolute;
@@ -63,16 +69,15 @@ header::before {
 }
 
 header h1 {
-    font-size: 3rem; /* Más grande e imponente */
+    font-size: 3rem; 
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 6px;
     font-weight: 900;
     text-shadow: 2px 4px 10px rgba(0,0,0,0.3);
-    font-family: 'Montserrat', sans-serif; /* Sugerencia de fuente más fuerte */
+    font-family: var(--font-heading); 
 }
 
-/* Añadir un subtítulo o adorno debajo del H1 */
 header::after {
     content: "Discovery Ecuador";
     display: block;
@@ -83,12 +88,13 @@ header::after {
     font-weight: 300;
 }
 
-/* AJUSTE EN MAIN PARA QUE NO CHOQUE CON EL HEADER */
+/* --- 5. MAIN CONTENT & HERO IMAGE --- */
 main {
     display: flex;
     flex-direction: column;
     padding: 0;
-    margin: -20px auto 0 auto; /* Sube un poco para que se superponga al header */
+    /* Negative margin allows the main content to overlap the header slightly */
+    margin: -20px auto 0 auto; 
     position: relative;
     z-index: 10;
     border-radius: 8px;
@@ -104,37 +110,34 @@ picture img {
     filter: brightness(0.9);
 }
 
-/* 3. CONTENEDORES: Glassmorphism suave con bordes tricolores */
+/* --- 6. INFORMATION BLOCKS (MOBILE FIRST) --- */
+/* Glassmorphism style with tricolor borders */
 section {
     background-color: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(8px); /* Blur effect for readability over image */
     text-align: center;
     border-left: 8px solid var(--ecuador-blue);
     border-radius: 4px;
     box-shadow: var(--shadow);
-    
-    /* CAMBIOS AQUÍ */
-    margin: 1rem 0;     /* Quitamos el 'auto' para que no intente centrarse con espacio */
-    width: 100%;        /* Ocupa todo el ancho disponible */
-    max-width: 100%;    /* Eliminamos el límite de 320px para que se estire */
-    
+    margin: 1rem 0;     
+    width: 100%;        /* Full width on mobile */
+    max-width: 100%;    
     overflow: hidden;
 }
 
-/* Estilo diferente para la sección de clima */
 .weather {
-    border-left: 8px solid var(--ecuador-red); /* Acento rojo para diferenciar */
+    border-left: 8px solid var(--ecuador-red); /* Red accent for weather block */
 }
 
 section h2 {
     background-color: transparent;
     color: var(--ecuador-blue);
-    margin: 0;
+    margin: 0 auto;
     padding: 1.2rem 1.2rem 0.5rem 1.2rem;
     font-size: 1.5rem;
     text-align: center;
     border-bottom: 2px solid var(--ecuador-yellow);
     display: inline-block;
-    margin-left: 1.2rem;
 }
 
 section ul, section p {
@@ -144,75 +147,82 @@ section ul, section p {
 }
 
 section li {
-    padding-left: 1rem;
     text-align: center;
     list-style: none;
     padding: 0.5rem 0;
     border-bottom: 1px solid #f0f0f0;
 }
 
+/* Mobile SVG handling */
 .weather-icon-mobile {
-    /* Controlamos el tamaño real */
     width: 100px; 
-    height: auto; /* Mantiene la proporción */
-    
-    /* Centrado en móvil */
+    height: auto; 
     display: block;
     margin: 1rem auto;
-    
-    /* Filtro opcional: si tu SVG es negro y lo quieres blanco para que resalte */
-    /* filter: brightness(0) invert(1); */
 }
 
 .weather-icon-desktop {
-    display: none;
+    display: none; /* Hidden on mobile by default */
 }
 
-/* 4. VISTA DESKTOP (POSICIONAMIENTO) */
+/* --- 7. DESKTOP VIEWPORT (768px+) --- */
 @media (min-width: 768px) {
-    main { display: block; }
+    main { 
+        display: block; 
+    }
 
     section {
-        width: 320px; /* En escritorio vuelven a ser cajas pequeñas */
+        width: 320px; /* Returns to fixed card size on desktop */
         max-width: 320px;
-        margin: 0;    /* El posicionamiento absoluto se encarga del resto */
+        margin: 0;    
         text-align: left;
-        position: absolute
+        position: absolute; /* Allows absolute positioning over the hero image */
     }
+
     section h2 {
         text-align: left;
+        margin-left: 1.2rem;
     }
+
     section li {
         padding-left: 1rem;
         text-align: left;
     }
+
     section ul, section p {
         text-align: left;
     }
 
+    /* Absolute Placement over Collage */
     .data {
-        position: absolute;
         top: 40px;
         left: 40px;
-        line-height: 1.8;
+        line-height: 1.8; /* Improves readability per CSS Overview analysis */
     }
+
     .weather {
-        position: absolute;
         bottom: 40px;
         right: 40px;
     }
 
-    .weather-icon-mobile { display: none; }
-
-    .weather-icon-desktop {
-        display: inline; /* El contenedor aparece en pantallas grandes */
+    .weather-icon-mobile { 
+        display: none; 
     }
 
+    .weather-icon-desktop {
+        display: inline; /* Shows desktop icon container */
+    }
+
+    /* Required pseudo-element for desktop weather icon */
+    .weather-icon-desktop::after {
+        content: " ⛅";
+        font-size: 1.5rem;
+    }
 }
 
-/* 5. FOOTER: Elegante y oscuro */
+/* --- 8. FOOTER SECTION --- */
 footer {
-    background-color: #1a1a1a; /* Negro para dar seriedad */
+    background-color: #1a1a1a; 
     color: #fff;
     text-align: center;
     padding: 3rem 1rem;

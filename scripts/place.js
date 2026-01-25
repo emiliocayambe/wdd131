@@ -1,24 +1,43 @@
-// Actualizar fechas del pie de página
-document.getElementById("lastModified").innerHTML = document.lastModified;
-// use the date object  
-const today = new Date();
-document.getElementById("currentyear").innerHTML = today.getFullYear();
+/* --- 1. FOOTER DATE UPDATES --- */
 
-// Configuración de variables de clima
-const temp = 28; // Temperatura estática en °C
-const windSpeed = 10; // Velocidad del viento en km/h
+// Update the current year for the copyright notice
+const currentYear = new Date().getFullYear();
+document.querySelector("#currentyear").textContent = currentYear;
 
-// Función para calcular sensación térmica (Fórmula en Celsius)
+// Update the last modified date of the document
+const lastModified = document.lastModified;
+document.querySelector("#lastModified").textContent = `Last Modification: ${lastModified}`;
+
+
+/* --- 2. WEATHER & WIND CHILL LOGIC --- */
+
+// Static weather values as per project requirements
+const temp = 28; // Static temperature in °C
+const windSpeed = 10; // Static wind speed in km/h
+
+/**
+ * Calculates the wind chill factor using the Celsius formula.
+ * Formula: 13.12 + 0.6215T - 11.37V^0.16 + 0.3965TV^0.16
+ * @param {number} t - Temperature
+ * @param {number} s - Wind Speed
+ * @returns {string} Calculated wind chill rounded to 1 decimal place.
+ */
 function calculateWindChill(t, s) {
-    return (13.12 + 0.6215 * t - 11.37 * Math.pow(s, 0.16) + 0.3965 * t * Math.pow(s, 0.16)).toFixed(1);
+    return (13.12 + (0.6215 * t) - (11.37 * Math.pow(s, 0.16)) + (0.3965 * t * Math.pow(s, 0.16))).toFixed(1);
 }
 
-const windChillElement = document.getElementById("windchill");
+// Select the display element
+const windChillElement = document.querySelector("#windchill");
 
-// Condición: Temp <= 10°C y Viento > 4.8 km/h para sistema métrico
+/**
+ * Requirement Check: 
+ * Temperature must be <= 10°C AND Wind Speed must be > 4.8 km/h 
+ * to calculate a valid Wind Chill in the metric system.
+ */
 if (temp <= 10 && windSpeed > 4.8) {
-    windChillElement.textContent = calculateWindChill(temp, windSpeed) + "°C";
+    // If conditions are met, display the result
+    windChillElement.textContent = `${calculateWindChill(temp, windSpeed)}°C`;
 } else {
+    // Since Guayaquil is 28°C, it should display "N/A"
     windChillElement.textContent = "N/A";
 }
-
