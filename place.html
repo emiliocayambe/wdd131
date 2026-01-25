@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A webpage for placing items. To implemented as part of a web development project.">
+    <meta name="author" content="Emilio Cayambe">
+    <title>Guayaquil - Ecuador</title>
+    <script defer src="scripts/place.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/place.css">
+</head>
+<body>
+     <header>
+        <h1>Ecuador</h1>
+    </header>
+    <main>
+        <picture>
+            <source srcset="images/ecuador-small.webp" media="(max-width: 600px)">
+            <img src="images/galapagos-ecuador.webp" alt="galapagos-ecuador" loading="lazy">
+        </picture>
+
+        <section class="data">
+            <h2>Data</h2>
+            <ul>
+                <li><strong>Area:</strong> 344.5 sq km</li>
+                <li><strong>Population:</strong> 2.7 Million</li>
+                <li><strong>Capital:</strong> Quito (National)</li>
+                <li><strong>Languages:</strong> Spanish</li>
+                <li><strong>Currency:</strong> US Dollar</li>
+                <li><strong>Time Zone:</strong> ECT (UTC-5)</li>
+                <li><strong>Calling Code:</strong> +593</li>
+            </ul>
+        </section>
+
+        <section class="weather">
+            <h2>Weather <span class="weather-icon-desktop">⛅</span></h2>
+            <img src="images/weather-icon.svg" alt="weather icon" class="weather-icon-mobile">
+            <p><strong>Temperature:</strong> <span id="temp">28</span>°C</p>
+            <p><strong>Conditions:</strong> Humid</p>
+            <p><strong>Wind:</strong> <span id="wind">10</span> km/h</p>
+            <p><strong>Wind Chill:</strong> <span id="windchill"></span></p>
+        </section>
+    </main>
+    <footer>
+        <p>© <span id="currentyear"></span> | Emilio Cayambe | Guayaquil, Ecuador 🇪🇨</p>
+        <p>Ultima modificacion: <span id="lastModified"></span></p>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,56 @@
+body {
+    font-family: Roboto, helvetica, sans-serif;
+}
+
+header,
+main,
+footer {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+/* 1. Reemplazamos marquee por .banner según las instrucciones */
+.banner {
+    padding: 1rem;
+    background-color: #eee;
+    text-align: center; /* Opcional: para que se vea ordenado */
+}
+
+h1 {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* 2. Configuración de Main con dos columnas */
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Crea dos columnas iguales */
+    gap: 1.5rem; /* Espaciado entre elementos */
+}
+
+/* 3. El h2 debe ocupar las dos columnas y alinearse a la izquierda */
+h2 {
+    color: navy;
+    text-align: left; /* Corregido: de center a left */
+    grid-column: 1 / 3; /* Hace que el h2 abarque ambas columnas */
+}
+
+article p {
+    text-align: justify;
+}
+
+/* 4. Corrección de Contraste y Padding en .callout */
+.callout {
+    /* Los colores originales (#777 y #702963) no pasan la prueba WCAG */
+    color: #ffffff; /* Blanco para alto contraste AA/AAA */
+    background-color: #702963;
+    padding: 1.5rem; /* Corregido: se agregó padding */
+    grid-column: 1 / 3; /* Opcional: para que el callout también sea ancho */
+}
+
+/* 5. Footer alineado a la izquierda */
+footer {
+    margin-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: smaller;
+    text-align: left; /* Corregido: de right a left */
+}

@@ -1,0 +1,229 @@
+:root {
+    /* Paleta de la bandera como acentos */
+    --ecuador-yellow: #FFDD00;
+    --ecuador-blue: #0033A0;
+    --ecuador-red: #ED1C24;
+    
+    /* Colores funcionales */
+    --primary-color: var(--ecuador-blue);
+    --text-color: #2c3e50;
+    --bg-light: #ffffff;
+    --bg-soft: #f8f9fa;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --font-main: 'Roboto', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-main);
+    background-color: var(--bg-soft);
+    color: var(--text-color);
+}
+
+/* 2. APLICAR EL MISMO ANCHO A TODO */
+header, 
+main, 
+footer {
+    max-width: 1160px; /* El ancho que definimos para el collage */
+    margin: 0 auto;    /* ESTA REGLA centra los tres elementos */
+    width: 95%;        /* Para que en móviles no pegue a los bordes */
+    background-color: #fff; /* Asegura que todos tengan fondo blanco */
+}
+/* 1. HEADER: Limpio con una franja tricolor sutil */
+
+header {
+    background: linear-gradient(135deg, rgba(0, 51, 160, 0.9) 0%, rgba(0, 74, 153, 0.8) 100%), 
+                url('https://www.transparenttextures.com/patterns/cubes.png'); /* Textura sutil */
+    background-color: var(--ecuador-blue);
+    padding: 3.5rem 1rem;
+    color: white;
+    text-align: center;
+    position: relative;
+    border-bottom: 8px solid var(--ecuador-yellow);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Franja tricolor decorativa en la parte superior */
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to right, 
+        var(--ecuador-yellow) 0%, var(--ecuador-yellow) 50%, 
+        var(--ecuador-blue) 50%, var(--ecuador-blue) 75%, 
+        var(--ecuador-red) 75%, var(--ecuador-red) 100%);
+}
+
+header h1 {
+    font-size: 3rem; /* Más grande e imponente */
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    font-weight: 900;
+    text-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+    font-family: 'Montserrat', sans-serif; /* Sugerencia de fuente más fuerte */
+}
+
+/* Añadir un subtítulo o adorno debajo del H1 */
+header::after {
+    content: "Discovery Ecuador";
+    display: block;
+    font-size: 0.9rem;
+    letter-spacing: 10px;
+    margin-top: 10px;
+    color: var(--ecuador-yellow);
+    font-weight: 300;
+}
+
+/* AJUSTE EN MAIN PARA QUE NO CHOQUE CON EL HEADER */
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: -20px auto 0 auto; /* Sube un poco para que se superponga al header */
+    position: relative;
+    z-index: 10;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+picture img {
+    width: 100%;
+    height: 500px; 
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.9);
+}
+
+/* 3. CONTENEDORES: Glassmorphism suave con bordes tricolores */
+section {
+    background-color: rgba(255, 255, 255, 0.70);
+    text-align: center;
+    border-left: 8px solid var(--ecuador-blue);
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    
+    /* CAMBIOS AQUÍ */
+    margin: 1rem 0;     /* Quitamos el 'auto' para que no intente centrarse con espacio */
+    width: 100%;        /* Ocupa todo el ancho disponible */
+    max-width: 100%;    /* Eliminamos el límite de 320px para que se estire */
+    
+    overflow: hidden;
+}
+
+/* Estilo diferente para la sección de clima */
+.weather {
+    border-left: 8px solid var(--ecuador-red); /* Acento rojo para diferenciar */
+}
+
+section h2 {
+    background-color: transparent;
+    color: var(--ecuador-blue);
+    margin: 0;
+    padding: 1.2rem 1.2rem 0.5rem 1.2rem;
+    font-size: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid var(--ecuador-yellow);
+    display: inline-block;
+    margin-left: 1.2rem;
+}
+
+section ul, section p {
+    text-align: center;
+    padding: 1.2rem;
+    margin: 0;
+}
+
+section li {
+    text-align: center;
+    list-style: none;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.weather-icon-mobile {
+    /* Controlamos el tamaño real */
+    width: 100px; 
+    height: auto; /* Mantiene la proporción */
+    
+    /* Centrado en móvil */
+    display: block;
+    margin: 1rem auto;
+    
+    /* Filtro opcional: si tu SVG es negro y lo quieres blanco para que resalte */
+    /* filter: brightness(0) invert(1); */
+}
+
+.weather-icon-desktop {
+    display: none;
+}
+
+/* 4. VISTA DESKTOP (POSICIONAMIENTO) */
+@media (min-width: 768px) {
+    main { display: block; }
+
+    section {
+        width: 320px; /* En escritorio vuelven a ser cajas pequeñas */
+        max-width: 320px;
+        margin: 0;    /* El posicionamiento absoluto se encarga del resto */
+        text-align: left;
+        position: absolute
+    }
+    section h2 {
+        text-align: left;
+    }
+    section li {
+        text-align: left;
+    }
+    section ul, section p {
+        text-align: left;
+    }
+
+    .data {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+    }
+
+    .data {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+    }
+
+    .weather {
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+    }
+
+    .weather-icon-mobile { display: none; }
+
+    .weather-icon-desktop {
+        display: inline; /* El contenedor aparece en pantallas grandes */
+    }
+
+}
+
+/* 5. FOOTER: Elegante y oscuro */
+footer {
+    background-color: #1a1a1a; /* Negro para dar seriedad */
+    color: #fff;
+    text-align: center;
+    padding: 3rem 1rem;
+    border-top: 5px solid var(--ecuador-blue);
+}
+
+footer p {
+    margin: 0.5rem 0;
+    opacity: 0.8;
+}
