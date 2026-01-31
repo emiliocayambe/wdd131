@@ -1,5 +1,3 @@
-/* temples-large.css - Desktop adjustments */
-
 /* Only apply these styles for screens wider than 740px */
 @media (min-width: 740px) {
   
@@ -42,37 +40,44 @@
     padding: 0.5rem 1.5rem;
   }
 
-#temple-cards {
+  /* 3. Temple Cards Grid Layout */
+  #temple-cards {
     display: grid;
-    /* Mantenemos el auto-fit para que sea responsivo */
+    /* Use auto-fit for responsive column behavior */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 30px;
     padding: 20px;
     max-width: 1200px; 
     margin: 0 auto;
-    /* Centramos las tarjetas si hay pocas (como cuando sale Manti sola) */
+    /* Center cards when there are fewer items (e.g., single search result) */
     justify-content: center; 
-}
+  }
 
-/* AQUÍ ESTÁ EL TRUCO: */
-.temple-cards section {
-    max-width: 400px; /* La tarjeta nunca será más ancha que tu imagen original */
-    margin: 0 auto;    /* Si hay una sola, se centra en su columna */
-    width: 100%;       /* Para que en móviles sí ocupe el ancho disponible */
+  /* Card styling and width constraints */
+  .temple-cards section {
+    /* Prevent the card from exceeding the original image width to avoid pixelation */
+    max-width: 400px; 
+    /* Center the card within its grid column */
+    margin: 0 auto;    
+    /* Ensure full width on mobile viewports */
+    width: 100%;       
     
-    /* Estilos opcionales para que se vea como tarjeta */
+    /* Card visual styles */
     background-color: #fff;
     border: 1px solid #ddd;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+  }
 
-.temple-cards img {
+  /* Image handling within cards */
+  .temple-cards img {
     width: 100%;
     height: 250px;
+    /* Maintain aspect ratio while filling the container */
     object-fit: cover; 
     display: block;
-}
+  }
 
+  /* 4. Main Content constraints */
   /* Limit the main content width for better readability on wide monitors */
   main {
     max-width: 1100px; 
