@@ -1,0 +1,81 @@
+/* temples-large.css - Desktop adjustments */
+
+/* Only apply these styles for screens wider than 740px */
+@media (min-width: 740px) {
+  
+  /* 1. Header & Menu layout adjustments */
+  header {
+    padding: 1rem 5%;
+    /* Ensure title and nav stay on opposite sides in desktop view */
+    justify-content: space-between !important; 
+  }
+
+  header h1 {
+    /* Ensure the title is always visible on larger screens */
+    display: block !important;
+  }
+
+  /* Requirement: Flexbox on the nav element for desktop alignment */
+  nav {
+    display: flex;
+    flex-direction: row;    /* Horizontal alignment for desktop */
+    justify-content: flex-end;
+    flex: 1;                /* Occupies remaining space to the right of the title */
+  }
+
+  /* Hide the hamburger button on large screens */
+  #menu {
+    display: none; 
+  }
+
+  /* 2. Horizontal Navigation List */
+  .navigation {
+    display: flex; 
+    position: static;      /* Reset mobile absolute positioning */
+    flex-direction: row;
+    background-color: transparent;
+    width: auto;
+  }
+
+  .navigation a {
+    border-bottom: none;   /* Remove mobile separators */
+    padding: 0.5rem 1.5rem;
+  }
+
+#temple-cards {
+    display: grid;
+    /* Mantenemos el auto-fit para que sea responsivo */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px; 
+    margin: 0 auto;
+    /* Centramos las tarjetas si hay pocas (como cuando sale Manti sola) */
+    justify-content: center; 
+}
+
+/* AQUÍ ESTÁ EL TRUCO: */
+.temple-cards section {
+    max-width: 400px; /* La tarjeta nunca será más ancha que tu imagen original */
+    margin: 0 auto;    /* Si hay una sola, se centra en su columna */
+    width: 100%;       /* Para que en móviles sí ocupe el ancho disponible */
+    
+    /* Estilos opcionales para que se vea como tarjeta */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.temple-cards img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; 
+    display: block;
+}
+
+  /* Limit the main content width for better readability on wide monitors */
+  main {
+    max-width: 1100px; 
+    margin: 0 auto;
+  }
+}
