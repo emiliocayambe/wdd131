@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="form review for products to apply styles to the form and make it look better">
+    <meta name="author" content="Emilio Cayambe">
+    <title>Horizonte 593 - Project Review</title>
+        <link rel="stylesheet" href="styles/form.css">
+    <script src="scripts/form.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <h1>Product Review</h1>
+    </header>
+
+    <main>
+        <form action="review.html" method="get">
+            <label for="product-name">Product Name</label>
+            <select id="product-name" name="product-name" required>
+                <option value="" disabled selected>Select a Product ...</option>
+                </select>
+
+            <fieldset>
+                <legend>Overall Rating</legend>
+                <div class="rating-container">
+                    <label><input type="radio" name="rating" id="star1" value="1" required> ☆</label>
+                    <label><input type="radio" name="rating" id="star2" value="2" required> ☆☆</label>
+                    <label><input type="radio" name="rating" id="star3" value="3" required> ☆☆☆</label>
+                    <label><input type="radio" name="rating" id="star4" value="4" required> ☆☆☆☆</label>
+                    <label><input type="radio" name="rating" id="star5" value="5" required> ☆☆☆☆☆</label>
+                </div>
+            </fieldset>
+
+            <label for="install-date">Date of Installation</label>
+            <input type="date" id="install-date" name="install-date" required>
+
+            <fieldset>
+                <legend>Which features did you find useful? (Check all that apply)</legend>
+                <label><input type="checkbox" id="durability" name="features" value="durability"> Durability</label>
+                <label><input type="checkbox" id="ease" name="features" value="ease-of-use"> Ease of Use</label>
+                <label><input type="checkbox" id="performance" name="features" value="performance"> Performance</label>
+                <label><input type="checkbox" id="design" name="features" value="design"> Design</label>
+            </fieldset>
+
+            <label for="review">Written Review (Optional)</label>
+            <textarea id="review" name="review" rows="4"></textarea>
+
+            <label for="user-name">Your Name (Optional)</label>
+            <input type="text" id="user-name" name="user-name">
+
+            <input type="submit" value="Post Review">
+        </form>
+    </main>
+
+    <footer>
+        <p>© <span id="currentyear"></span> | Emilio Cayambe | Guayaquil, Ecuador 🇪🇨</p>
+        <p>Last modified: <span id="lastModified"></span></p>
+    </footer>
+</body>
+</html>

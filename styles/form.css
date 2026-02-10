@@ -1,0 +1,234 @@
+/* --- Variables y Configuración Base --- */
+:root {
+    --primary-green: #1b4332;    /* Verde Bosque (Header/Footer) */
+    --medium-green: #2d6a4f;     /* Verde Esmeralda (Botones/Labels) */
+    --accent-green: #52b788;     /* Verde Menta (Acentos/Focus) */
+    --light-bg: #f8faf9;         /* Fondo de página */
+    --form-bg: #ffffff;          /* Fondo del formulario */
+    --text-dark: #081c15;
+    --border-color: #d8e2dc;
+    --shadow-color: rgba(27, 67, 50, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--light-bg);
+}
+
+/* --- Header y Footer --- */
+header, footer {
+    background-color: var(--primary-green);
+    color: #ffffff;
+    text-align: center;
+    padding: 2.5rem 1rem;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+}
+
+footer {
+    padding: 1.5rem 1rem;
+    margin-top: 2rem;
+}
+
+footer p {
+    font-size: 0.9rem;
+    margin: 0.4rem 0;
+}
+
+/* --- Layout Principal --- */
+main {
+    max-width: 650px;
+    margin: -2.5rem auto 3rem auto; /* Efecto de superposición sobre el header */
+    padding: 0 1rem;
+}
+
+form {
+    background-color: var(--form-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    border: 1px solid var(--border-color);
+}
+
+/* --- Elementos de Formulario --- */
+label {
+    display: block;
+    margin-top: 1.5rem;
+    font-weight: 600;
+    color: var(--medium-green);
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.85rem;
+    margin-top: 0.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-green);
+    box-shadow: 0 0 8px rgba(82, 183, 136, 0.2);
+}
+
+/* --- Contenedores Especiales (Fieldsets) --- */
+fieldset {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-top: 1.8rem;
+    background-color: #fbfff9;
+}
+
+legend {
+    padding: 0 0.8rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+/* --- Lógica de Opciones (Mobile-First) --- */
+/* Rating y Checkboxes se apilan verticalmente por defecto */
+.rating-container, 
+.features-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.rating-container label,
+fieldset label {
+    display: flex;
+    flex-direction: row; /* Alinea el círculo/cuadro con el texto */
+    align-items: center;
+    gap: 12px;
+    margin-top: 0;
+    padding: 12px;
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.rating-container label:hover,
+fieldset label:hover {
+    background-color: #f0f7f4;
+}
+
+/* Ocultar margen superior extra en labels dentro de fieldsets */
+fieldset label {
+    margin-bottom: 0;
+}
+
+/* --- Botón de Envío --- */
+input[type="submit"] {
+    width: 100%;
+    background-color: var(--medium-green);
+    color: white;
+    border: none;
+    padding: 1.2rem;
+    margin-top: 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+    text-transform: uppercase;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--primary-green);
+    transform: translateY(-2px);
+}
+
+/* --- Pantallas Grandes (Desktop) --- */
+@media (min-width: 768px) {
+    main {
+        max-width: 800px;
+    }
+
+    form {
+        padding: 3rem;
+    }
+
+    /* En escritorio, las estrellas se ponen una al lado de la otra */
+    .rating-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .rating-container label {
+        flex: 1;
+        flex-direction: column; /* Radio debajo de la estrella en desktop */
+        justify-content: center;
+        text-align: center;
+        padding: 15px 5px;
+    }
+
+    /* Checkboxes en dos columnas para aprovechar espacio */
+    .features-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+}
+
+/* --- styles for review confirmation --- */
+.confirmation-card {
+    text-align: center;
+    background: var(--form-bg);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.counter-container {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: #fbfff9;
+    border: 2px dashed var(--accent-green);
+    border-radius: 8px;
+}
+
+#review-count {
+    font-size: 3.5rem;
+    color: var(--primary-green);
+    margin: 0.5rem 0;
+}
+
+.back-button {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--medium-green);
+    font-weight: 700;
+    border: 2px solid var(--medium-green);
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: var(--medium-green);
+    color: white;
+}
