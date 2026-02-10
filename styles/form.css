@@ -1,15 +1,16 @@
-/* --- Variables y Configuración Base --- */
+/* --- Variables and Color Palette --- */
 :root {
-    --primary-green: #1b4332;    /* Verde Bosque (Header/Footer) */
-    --medium-green: #2d6a4f;     /* Verde Esmeralda (Botones/Labels) */
-    --accent-green: #52b788;     /* Verde Menta (Acentos/Focus) */
-    --light-bg: #f8faf9;         /* Fondo de página */
-    --form-bg: #ffffff;          /* Fondo del formulario */
-    --text-dark: #081c15;
-    --border-color: #d8e2dc;
+    --primary-green: #1b4332;    /* Dark Forest Green */
+    --medium-green: #2d6a4f;     /* Emerald Green */
+    --accent-green: #52b788;     /* Mint Green */
+    --light-bg: #f8faf9;         /* Very light mint background */
+    --form-bg: #ffffff;          /* Pure white for the form */
+    --text-dark: #081c15;        /* Near black for readability */
+    --border-color: #d8e2dc;     /* Soft border color */
     --shadow-color: rgba(27, 67, 50, 0.15);
 }
 
+/* --- General Reset --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -23,7 +24,7 @@ body {
     background-color: var(--light-bg);
 }
 
-/* --- Header y Footer --- */
+/* --- Header and Footer Styling --- */
 header, footer {
     background-color: var(--primary-green);
     color: #ffffff;
@@ -46,10 +47,10 @@ footer p {
     margin: 0.4rem 0;
 }
 
-/* --- Layout Principal --- */
+/* --- Main Layout --- */
 main {
     max-width: 650px;
-    margin: -2.5rem auto 3rem auto; /* Efecto de superposición sobre el header */
+    margin: -2.5rem auto 3rem auto; /* Overlap effect on header */
     padding: 0 1rem;
 }
 
@@ -61,8 +62,8 @@ form {
     border: 1px solid var(--border-color);
 }
 
-/* --- Elementos de Formulario --- */
-label {
+/* --- Standard Form Elements --- */
+form > label {
     display: block;
     margin-top: 1.5rem;
     font-weight: 600;
@@ -88,7 +89,7 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 0 8px rgba(82, 183, 136, 0.2);
 }
 
-/* --- Contenedores Especiales (Fieldsets) --- */
+/* --- Fieldsets (Ratings and Features) --- */
 fieldset {
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -105,43 +106,50 @@ legend {
     text-transform: uppercase;
 }
 
-/* --- Lógica de Opciones (Mobile-First) --- */
-/* Rating y Checkboxes se apilan verticalmente por defecto */
+/* --- Selection Options (Radios and Checkboxes) --- */
 .rating-container, 
-.features-container {
+.features-grid {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: column; /* Stacked vertically for mobile */
+    gap: 8px;
     margin-top: 10px;
 }
 
-.rating-container label,
-fieldset label {
+/* Wrapper for input + label to keep them close */
+.option-item {
     display: flex;
-    flex-direction: row; /* Alinea el círculo/cuadro con el texto */
     align-items: center;
-    gap: 12px;
-    margin-top: 0;
-    padding: 12px;
-    background-color: #ffffff;
+    background-color: #fff;
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    font-weight: 500;
-    cursor: pointer;
+    padding: 10px 15px;
     transition: background 0.2s;
+    justify-content: flex-start; /* Keeps them to the left */
+    gap: 10px; /* Tight distance between box and text */
 }
 
-.rating-container label:hover,
-fieldset label:hover {
+.option-item:hover {
     background-color: #f0f7f4;
 }
 
-/* Ocultar margen superior extra en labels dentro de fieldsets */
-fieldset label {
-    margin-bottom: 0;
+.option-item label {
+    margin-top: 0;
+    font-weight: 500;
+    color: var(--text-dark);
+    cursor: pointer;
+    flex: none; /* Prevents label from pushing away */
 }
 
-/* --- Botón de Envío --- */
+input[type="radio"], 
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--medium-green);
+    flex-shrink: 0; /* Prevents shrinking on small screens */
+}
+
+/* --- Submit Button --- */
 input[type="submit"] {
     width: 100%;
     background-color: var(--medium-green);
@@ -162,7 +170,7 @@ input[type="submit"]:hover {
     transform: translateY(-2px);
 }
 
-/* --- Pantallas Grandes (Desktop) --- */
+/* --- Responsive Adjustments (Desktop) --- */
 @media (min-width: 768px) {
     main {
         max-width: 800px;
@@ -172,29 +180,31 @@ input[type="submit"]:hover {
         padding: 3rem;
     }
 
-    /* En escritorio, las estrellas se ponen una al lado de la otra */
+    /* Horizontal layout for ratings */
     .rating-container {
         flex-direction: row;
         justify-content: space-between;
+        gap: 10px;
     }
 
-    .rating-container label {
+    .rating-container .option-item {
         flex: 1;
-        flex-direction: column; /* Radio debajo de la estrella en desktop */
+        flex-direction: column; /* Stack star above radio */
+        padding: 15px 5px;
+        gap: 5px;
         justify-content: center;
         text-align: center;
-        padding: 15px 5px;
     }
 
-    /* Checkboxes en dos columnas para aprovechar espacio */
+    /* Grid for features to save vertical space */
     .features-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 15px;
+        gap: 12px;
     }
 }
 
-/* --- styles for review confirmation --- */
+/* --- Review Confirmation Page (review.html) --- */
 .confirmation-card {
     text-align: center;
     background: var(--form-bg);
